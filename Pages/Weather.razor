@@ -1,0 +1,152 @@
+﻿@page "/"
+@using System.Net.Http
+@using System.Text.Json
+@inject HttpClient httpClient
+@inject IJSRuntime jsRuntime
+<!DOCTYPE html>
+<html>
+
+<head>
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <div class="border-rounded" style="font-weight: bold; color: rgb(0, 0, 0); background-color:blue; ">
+        <h3 style="font-weight: bold; color: black;" class="text-center">
+            WEATHER FORECAST</h3>
+        <h3 style="font-weight: bold; color: black;">
+            Weather is the state of the atmosphere, including temperature, atmospheric pressure, wind, humidity,
+            precipitation, and cloud cover. It differs from climate, which is all weather conditions for a particular
+            location averaged over about 30 years. Weather is influenced by latitude, altitude, and local and regional
+            geography. It impacts the way people dress each day and the types of structures built.
+        </h3>
+    </div>
+
+
+    <div class="container">
+
+
+        <div class="row" style="font-weight: bold; color: rgb(23, 24, 27);">
+            <div class="col-4">
+                <img class="rounded-circle" alt="avatar2"
+                    src="https://img.freepik.com/free-photo/weather-effects-composition_23-2149853295.jpg?w=350" />
+            </div>
+            <div class="col-4">
+                <img class="rounded-circle" alt="avatar1"
+                    src="https://img.freepik.com/free-vector/sticker-template-with-sun-cartoon-style-isolated_1308-65480.jpg?w=300" />
+            </div>
+            <div class="col-4">
+                <img class="rounded-circle" alt="avatar2"
+                    src="https://img.freepik.com/free-vector/background-with-rain-dark-sky_1308-10107.jpg?w=350" />
+            </div>
+        </div>
+
+        <div class="row " style="font-weight: bold; color: rgb(23, 24, 27);">
+            <div class="col-12">
+                <div class="form-group d-flex align-items-center" style="color: white; padding: 10px;">
+                    <label class="ml-5" for="countryInput"
+                        style="font-size: 30px; font-weight:italic;background-color: #0a0b0b; margin-right: 20px; border-radius: 10px;">Enter
+                        Your Location: *</label>
+
+                    <input class="form-control" required id="countryInput" @bind="selectedCountry"
+                        style="font-size: 16px; width: 600px; height: 50px; margin-right: 10px; outline: none;"
+                        maxlength="20" placeholder="Enter country" />
+
+                    <button id="weatherButton" class="btn btn-primary rounded-pill" @onclick="FetchWeather"
+                        style="font-size: 16px; margin-right: 20px;" disabled="@string.IsNullOrEmpty(selectedCountry)">
+                        Get Weather
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container" style="font-weight: bold; color: rgb(23, 24, 27);">
+        <div class="row justify-content-center mt-5 ml-5">
+            <div class="col-md-6">
+                <div class="card bg-light" style="width: 30rem;">
+                    <img class="card-img-top" style="background-color: blue;" src="@conditionIcon">
+                    <div class="card-body text-center">
+                        <h5  class="card-title text-center ml-3">Weather in @location
+                        </h5>
+                        <p class="card-text text-center">Current temperature: @temperatureCelsius °C</p>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">Condition: @condition</li>
+                        <li class="list-group-item">Pressure: @pressureMb mb</li>
+                        <li class="list-group-item">Humidity: @humidity %</li>
+                        <li class="list-group-item">Cloudiness: @cloudiness %</li>
+                    </ul>
+                    <div class="card-body text-center">
+                        <a href="https://education.nationalgeographic.org/resource/resource-library-weather/"
+                            class="card-link btn btn-primary">More Info</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+@code {
+    private string selectedCountry;
+    private string responseContent;
+    private string location;
+    private double temperatureCelsius;
+    private string condition;
+    private string conditionIcon;
+    private double pressureMb;
+    private int humidity;
+    private int cloudiness;
+
+  
+
+    private async Task FetchWeather()
+    {
+        if (!string.IsNullOrEmpty(selectedCountry))
+        {
+            try
+            {
+                var response = await
+                httpClient.GetAsync($"http://api.weatherapi.com/v1/current.json?key=2c5ed52ee3f044a0a6f51259240802&q={selectedCountry}&aqi=no");
+                response.EnsureSuccessStatusCode(); // Ensure success status code
+
+                @* Console.WriteLine(response); *@
+                responseContent = await response.Content.ReadAsStringAsync();
+                Console.WriteLine("---------------------");
+                Console.WriteLine(responseContent);
+
+                // Extracting data from JSON using System.Text.Json
+                using (JsonDocument doc = JsonDocument.Parse(responseContent))
+                {
+                    Console.WriteLine(doc);
+                    JsonElement root = doc.RootElement;
+
+                    location = root.GetProperty("location").GetProperty("name").GetString();
+                    Console.WriteLine(location);
+                    temperatureCelsius = root.GetProperty("current").GetProperty("temp_c").GetDouble();
+                    condition = root.GetProperty("current").GetProperty("condition").GetProperty("text").GetString();
+                    conditionIcon = "https:" + root.GetProperty("current").GetProperty("condition").GetProperty("icon").GetString();
+                    pressureMb = root.GetProperty("current").GetProperty("pressure_mb").GetDouble();
+                    humidity = root.GetProperty("current").GetProperty("humidity").GetInt32();
+                    cloudiness = root.GetProperty("current").GetProperty("cloud").GetInt32();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle error
+                Console.WriteLine($"Error: {ex.Message}");
+                responseContent = null;
+            }
+        }
+        else
+        {
+            responseContent = null;
+        }
+    }
+}

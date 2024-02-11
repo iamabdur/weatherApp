@@ -1,0 +1,65 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\bin\\Debug\\net8.0\\wwwroot\\_framework\\blazor.webassembly.js",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js"
+    },
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\obj\\Debug\\net8.0\\compressed\\inkqylmm17.gz",
+      "PackagePath": "staticwebassets\\_framework\\blazor.webassembly.js.gz"
+    },
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\bavaApp.styles.css",
+      "PackagePath": "staticwebassets\\bavaApp.styles.css"
+    },
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\css\\app.css",
+      "PackagePath": "staticwebassets\\css\\app.css"
+    },
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\css\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\css\\styles.css",
+      "PackagePath": "staticwebassets\\css\\styles.css"
+    },
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\icon-192.png",
+      "PackagePath": "staticwebassets\\icon-192.png"
+    },
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\index.html",
+      "PackagePath": "staticwebassets\\index.html"
+    },
+    {
+      "Id": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\sample-data\\weather.json",
+      "PackagePath": "staticwebassets\\sample-data\\weather.json"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.bavaApp.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.bavaApp.props",
+      "PackagePath": "build\\bavaApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.bavaApp.props",
+      "PackagePath": "buildMultiTargeting\\bavaApp.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.bavaApp.props",
+      "PackagePath": "buildTransitive\\bavaApp.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
