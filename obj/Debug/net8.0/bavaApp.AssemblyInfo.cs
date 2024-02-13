@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("bavaApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2889a9759330a75f1db532e5c76c7ee6d8cb99ad")]
 [assembly: System.Reflection.AssemblyProductAttribute("bavaApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("bavaApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,7 +1,7 @@
 {
   "mainAssemblyName": "bavaApp",
   "resources": {
-    "hash": "sha256-XIvmr5mBCdOOMq/tPc+oYrgNEnwWg5TsCZ7B3Ys421E=",
+    "hash": "sha256-j681e3DIScQgcJ0+DY/nobJTIP6fp+kfNZSTXpfruI4=",
     "jsModuleNative": {
       "dotnet.native.8.0.1.dbmjgetqdv.js": "sha256-SGOlISx+3G4kkvpC9Uq3qoPGsnjxGmW61QBev0lyI5U="
     },
@@ -208,10 +208,10 @@
       "mscorlib.wasm": "sha256-EpWTfh4m/hEcXRFYMCR9YeYHwdUJgcm1laBaxWfq2S4=",
       "netstandard.wasm": "sha256-2kH24/YfHmU3B4eYRyRmiwebYROM4+B9eDWKvMnUdP8=",
       "System.Private.CoreLib.wasm": "sha256-CsySKiP7HYY1pS8LTDE60EkqiX5oHb3WoEZHDNd1yK0=",
-      "bavaApp.wasm": "sha256-+j867feU44w07OuBk//uqSLFHuAuIRi27zXeCI9K0HY="
+      "bavaApp.wasm": "sha256-5A30TKiUysB47jDE4p4evyPPCYmvAegiaqecp26TBUE="
     },
     "pdb": {
-      "bavaApp.pdb": "sha256-o7ravzqb4yIUdfDz5PGhLGNuUEyK49oQYexU3DsC5tE="
+      "bavaApp.pdb": "sha256-+6TbMTv2fbeLK6bXIQU7gH7A5DgrTgOVSJzMikfApZ0="
     }
   },
   "cacheBootResources": true,

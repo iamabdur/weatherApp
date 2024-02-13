@@ -1029,3 +1029,4 @@ D:\Engineering\Wiseup\bavaApp\obj\Debug\net8.0\compressed\bb6j9faetz.gz
 D:\Engineering\Wiseup\bavaApp\obj\Debug\net8.0\compressed\c20ey9x7nu.gz
 D:\Engineering\Wiseup\bavaApp\obj\Debug\net8.0\compressed\qwmlsh1tdk.gz
 D:\Engineering\Wiseup\bavaApp\obj\Debug\net8.0\compressed\rxsx6fj4zp.gz
+D:\Engineering\Wiseup\bavaApp\obj\Debug\net8.0\bavaApp.sourcelink.json

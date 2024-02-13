@@ -3,90 +3,96 @@
 @using System.Text.Json
 @inject HttpClient httpClient
 @inject IJSRuntime jsRuntime
+
 <!DOCTYPE html>
 <html>
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        body {
+            background-color: #ffffff;
+        }
 
+        .gold-outline {
+            border: 5px solid #27b1bb;
+            /* Gold color */
+            border-radius: 10px;
+            /* Border radius */
+            padding: 5px;
+            /* Adjust padding as needed */
+        }
     </style>
-
 </head>
 
 <body>
-    <div class="border-rounded" style="font-weight: bold; color: rgb(0, 0, 0); background-color:blue; ">
-        <h3 style="font-weight: bold; color: black;" class="text-center">
-            WEATHER FORECAST</h3>
-        <h3 style="font-weight: bold; color: black;">
+    <div style="font-weight: bold;   border-radius:50px solid blue; outline:black;">
+        <h1 style="font-weight: bold; color: black;" class="text-center">
+            WEATHER FORECAST
+        </h1>
+        <h3 style="font-weight: italic; color: black; text-align: justify;font-weight:20px;">
             Weather is the state of the atmosphere, including temperature, atmospheric pressure, wind, humidity,
             precipitation, and cloud cover. It differs from climate, which is all weather conditions for a particular
             location averaged over about 30 years. Weather is influenced by latitude, altitude, and local and regional
             geography. It impacts the way people dress each day and the types of structures built.
         </h3>
+
     </div>
 
-
     <div class="container">
-
-
         <div class="row" style="font-weight: bold; color: rgb(23, 24, 27);">
-            <div class="col-4">
-                <img class="rounded-circle" alt="avatar2"
-                    src="https://img.freepik.com/free-photo/weather-effects-composition_23-2149853295.jpg?w=350" />
+            <div class="col-6 col-md-3">
+                <img class="rounded-circle gold-outline img-fluid" alt="avatar2"
+                    src="https://img.freepik.com/free-photo/weather-effects-composition_23-2149853295.jpg?w=250" />
             </div>
-            <div class="col-4">
-                <img class="rounded-circle" alt="avatar1"
-                    src="https://img.freepik.com/free-vector/sticker-template-with-sun-cartoon-style-isolated_1308-65480.jpg?w=300" />
+            <div class="col-6 col-md-3">
+                <img class="rounded-circle gold-outline img-fluid" alt="avatar1"
+                    src="https://img.freepik.com/free-photo/low-angle-shot-green-leafed-tree-bright-sky_181624-19264.jpg?w=250&t=st=1707751561~exp=1707752161~hmac=ad1c11b0bc95aa25a58568d939143c80d072c87696c5ea3c9f1e58e256291477" />
             </div>
-            <div class="col-4">
-                <img class="rounded-circle" alt="avatar2"
-                    src="https://img.freepik.com/free-vector/background-with-rain-dark-sky_1308-10107.jpg?w=350" />
+            <div class="col-6 col-md-3">
+                <img class="rounded-circle gold-outline img-fluid" alt="avatar2"
+                    src="https://img.freepik.com/free-vector/background-with-rain-dark-sky_1308-10107.jpg?w=250" />
+            </div>
+            <div class="col-6 col-md-3">
+                <img class="rounded-circle gold-outline img-fluid" alt="avatar1"
+                    src="https://img.freepik.com/free-photo/outdoor-evening-brown-calm-color_1232-4037.jpg?w=250&t=st=1707752166~exp=1707752766~hmac=64428fb398612f4723830bc304141edbe35e04e66bb1c6195263f1dc6aa694f3" />
             </div>
         </div>
 
-        <div class="row " style="font-weight: bold; color: rgb(23, 24, 27);">
+        <div class="row" style="font-weight: bold; color: rgb(23, 24, 27);">
             <div class="col-12">
                 <div class="form-group d-flex align-items-center" style="color: white; padding: 10px;">
-                    <label class="ml-5" for="countryInput"
-                        style="font-size: 30px; font-weight:italic;background-color: #0a0b0b; margin-right: 20px; border-radius: 10px;">Enter
+                    <label class="ml-3" for="countryInput"
+                        style="font-size: 25px; font-weight: italic; color: rgb(0, 0, 0); background-color: #00ffff; margin-right: 20px; border-radius: 20px;">Enter
                         Your Location: *</label>
 
                     <input class="form-control" required id="countryInput" @bind="selectedCountry"
-                        style="font-size: 16px; width: 600px; height: 50px; margin-right: 10px; outline: none;"
-                        maxlength="20" placeholder="Enter country" />
-
-                    <button id="weatherButton" class="btn btn-primary rounded-pill" @onclick="FetchWeather"
-                        style="font-size: 16px; margin-right: 20px;" disabled="@string.IsNullOrEmpty(selectedCountry)">
-                        Get Weather
-                    </button>
+                        style="border-radius: 50px; font-size: 25px; height: 40px; margin-right: 10px; outline: none; color: rgb(7, 7, 7);"
+                        maxlength="20" placeholder="Enter country" @onkeyup="CheckEnterKey" />
                 </div>
             </div>
         </div>
-    </div>
 
-    <div class="container" style="font-weight: bold; color: rgb(23, 24, 27);">
-        <div class="row justify-content-center mt-5 ml-5">
-            <div class="col-md-6">
-                <div class="card bg-light" style="width: 30rem;">
-                    <img class="card-img-top" style="background-color: blue;" src="@conditionIcon">
-                    <div class="card-body text-center">
-                        <h5  class="card-title text-center ml-3">Weather in @location
-                        </h5>
-                        <p class="card-text text-center">Current temperature: @temperatureCelsius °C</p>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Condition: @condition</li>
-                        <li class="list-group-item">Pressure: @pressureMb mb</li>
-                        <li class="list-group-item">Humidity: @humidity %</li>
-                        <li class="list-group-item">Cloudiness: @cloudiness %</li>
-                    </ul>
-                    <div class="card-body text-center">
-                        <a href="https://education.nationalgeographic.org/resource/resource-library-weather/"
-                            class="card-link btn btn-primary">More Info</a>
+        @if (!string.IsNullOrEmpty(responseContent))
+        {
+            <div class="row justify-content-center mb-5">
+                <div class="col-12">
+                    <div class="card mx-auto" style="border-radius: 50px; max-width: 300px;">
+                        <img src="@conditionIcon" class="card-img-top img-fluid" alt="Weather Icon">
+                        <div class="card-body">
+                            <h5 class="card-title" style="font-weight: bold;">Weather in @location</h5>
+                            <p class="card-text" style="font-weight: bold;">Temperature: @temperatureCelsius °C</p>
+                            <p class="card-text" style="font-weight: bold;">Condition: @condition</p>
+                            <p class="card-text" style="font-weight: bold;">Pressure: @pressureMb mb</p>
+                            <p class="card-text" style="font-weight: bold;">Humidity: @humidity %</p>
+                            <p class="card-text" style="font-weight: bold;">Cloudiness: @cloudiness %</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        }
+
+
     </div>
 
 </body>
@@ -104,7 +110,13 @@
     private int humidity;
     private int cloudiness;
 
-  
+    private async Task CheckEnterKey(KeyboardEventArgs e)
+    {
+        if (e.Code == "Enter")
+        {
+            await FetchWeather();
+        }
+    }
 
     private async Task FetchWeather()
     {
@@ -113,22 +125,18 @@
             try
             {
                 var response = await
-                httpClient.GetAsync($"http://api.weatherapi.com/v1/current.json?key=2c5ed52ee3f044a0a6f51259240802&q={selectedCountry}&aqi=no");
+                httpClient.GetAsync($"https://api.weatherapi.com/v1/current.json?key=2c5ed52ee3f044a0a6f51259240802&q={selectedCountry}&aqi=no");
                 response.EnsureSuccessStatusCode(); // Ensure success status code
 
-                @* Console.WriteLine(response); *@
                 responseContent = await response.Content.ReadAsStringAsync();
-                Console.WriteLine("---------------------");
-                Console.WriteLine(responseContent);
+                 Console.WriteLine(responseContent);
 
                 // Extracting data from JSON using System.Text.Json
                 using (JsonDocument doc = JsonDocument.Parse(responseContent))
                 {
-                    Console.WriteLine(doc);
                     JsonElement root = doc.RootElement;
 
                     location = root.GetProperty("location").GetProperty("name").GetString();
-                    Console.WriteLine(location);
                     temperatureCelsius = root.GetProperty("current").GetProperty("temp_c").GetDouble();
                     condition = root.GetProperty("current").GetProperty("condition").GetProperty("text").GetString();
                     conditionIcon = "https:" + root.GetProperty("current").GetProperty("condition").GetProperty("icon").GetString();

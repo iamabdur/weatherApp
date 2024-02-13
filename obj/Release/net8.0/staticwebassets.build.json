@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "cR1wGyyap5PwXH3zAeCa89wmnq0S8B+Yc1WEff7MDPY=",
+  "Hash": "sNxJsBB8UC0zxOkvQC1fhwzwPZkTfUjfBWBcHEyLB7o=",
   "Source": "bavaApp",
   "BasePath": "/",
   "Mode": "Root",
@@ -7862,6 +7862,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Identity": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\css\\styles.css",
+      "SourceId": "bavaApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\",
+      "BasePath": "/",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
       "Identity": "D:\\Engineering\\Wiseup\\bavaApp\\wwwroot\\favicon.png",

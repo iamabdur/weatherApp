@@ -1029,3 +1029,4 @@ D:\Engineering\Wiseup\bavaApp\obj\Release\net8.0\bavaApp.dll
 D:\Engineering\Wiseup\bavaApp\obj\Release\net8.0\refint\bavaApp.dll
 D:\Engineering\Wiseup\bavaApp\obj\Release\net8.0\bavaApp.pdb
 D:\Engineering\Wiseup\bavaApp\obj\Release\net8.0\ref\bavaApp.dll
+D:\Engineering\Wiseup\bavaApp\obj\Release\net8.0\bavaApp.sourcelink.json
